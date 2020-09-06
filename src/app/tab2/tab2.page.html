@@ -1,17 +1,56 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title>
+        Crypto-Currency Converter
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-content [fullscreen]="true">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>{{amount}} {{base}} is equevalent to {{result}} {{convertTo}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+
+          <ion-card-content>
+            <ion-input type="number" [(ngModel)]="amount" placeholder="0" (change)="handleInput($event)"></ion-input>
+            <ion-list>
+              <ion-item>
+                <ion-select placeholder="Select One" name="base" [(ngModel)]="base" (change)="handleInput($event)">
+                  <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+                    {{currency}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+          <ion-card-content>
+            <ion-input type="number" [(ngModel)]="result" placeholder="0" (change)="handleInput($event)" disabled>
+            </ion-input>
+            <ion-list>
+              <ion-item>
+                <ion-select placeholder="Select One" name="convertTo" [(ngModel)]="convertTo"
+                  (change)="handleInput($event)">
+                  <ion-select-option *ngFor="let currency of currencies" [value]="currency">
+                    {{currency}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+          <ion-card-content>
+
+            <ion-button (click)="handleSwap()">
+              <ion-icon icon="swap-vertical-outline"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-content>
 </ion-content>
