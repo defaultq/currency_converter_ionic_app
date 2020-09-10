@@ -24,6 +24,7 @@ export class Tab1Page {
   // Options
   chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Historic Price",
@@ -32,10 +33,10 @@ export class Tab1Page {
       enabled: true,
       mode: "xy",
     },
-    zoom: {
-      enabled: true,
-      mode: "xy",
-    },
+    // zoom: {
+    //   enabled: true,
+    //   mode: "xy",
+    // },
   };
   chartColors: Color[] = [
     {
@@ -81,7 +82,7 @@ export class Tab1Page {
       return;
     } else {
       const headers = {
-        "X-CoinAPI-Key": "112B7EED-9D83-4D40-B607-F0B9F20BCAED",
+        "X-CoinAPI-Key": "6CAEBD25-DA7B-4801-A894-87F236DBC6B8",
         Accept: "application/json",
       };
       this.http
@@ -97,12 +98,12 @@ export class Tab1Page {
   }
   getHistoricData() {
     const headers = {
-      "X-CoinAPI-Key": "112B7EED-9D83-4D40-B607-F0B9F20BCAED",
+      "X-CoinAPI-Key": "6CAEBD25-DA7B-4801-A894-87F236DBC6B8",
       Accept: "application/json",
     };
     this.http
       .get<any>(
-        `https://rest.coinapi.io/v1/ohlcv/${this.base}/${this.convertTo}/history?period_id=1MTH&time_start=2018-01-01T00:00:00`,
+        `https://rest.coinapi.io/v1/ohlcv/${this.base}/${this.convertTo}/history?period_id=1MTH&time_start=2020-01-01T00:00:00`,
         { headers }
       )
       .subscribe((data) => {
